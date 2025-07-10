@@ -9,7 +9,7 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import DeliveryTracker from '@/components/DeliveryTracker';
 import ContactSection from '@/components/ContactSection';
 import AnimatedFooter from '@/components/AnimatedFooter';
-import { BackgroundPaths } from '@/components/ui/background-paths';
+
 import PremiumSpotifyPlayer from '@/components/PremiumSpotifyPlayer';
 import CartSidebar from '@/components/CartSidebar';
 import LoginModal from '@/components/LoginModal';
@@ -71,8 +71,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black relative">
-      {/* Background Paths - Always visible across entire site */}
-      <BackgroundPaths />
+
       
       {/* Navigation */}
       <LimelightNavigation 

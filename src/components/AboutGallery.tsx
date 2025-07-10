@@ -9,17 +9,20 @@ const AboutGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   
   const images = [
-    { src: '/lovable-uploads/LF1.png', caption: 'La Fourmi Storefront' },
-    { src: '/lovable-uploads/LF2.png', caption: 'Premium Products Display' },
-    { src: '/lovable-uploads/LF3.png', caption: 'Lebanese Specialties' },
-    { src: '/lovable-uploads/LF4.png', caption: 'Fresh Daily Arrivals' },
-    { src: '/lovable-uploads/LF5.png', caption: 'Customer Service Excellence' },
-    { src: '/lovable-uploads/LF6.png', caption: 'Local Community Hub' },
-    { src: '/lovable-uploads/LF7.png', caption: 'Quality Guaranteed' },
-    { src: '/lovable-uploads/LF8.png', caption: '24/7 Delivery Service' },
-    // Additional images from existing uploads
-    { src: '/lovable-uploads/eb0a41e8-ad30-4380-86a3-6f415394328a.png', caption: 'Store Interior' },
-    { src: '/lovable-uploads/fda3ef9c-8f24-4f15-8091-84e6f12d64ce.png', caption: 'Product Selection' },
+    { src: '/images/hero1-staff.png', caption: 'Meet Elie - Founder & Owner' },
+    { src: '/images/hero2-staff.png', caption: 'Our Dedicated Team' },
+    { src: '/images/hero3-staff.png', caption: 'Customer Service Excellence' },
+    { src: '/images/beauty-shelve.png', caption: 'Beauty & Personal Care' },
+    { src: '/images/grain-shelve.png', caption: 'Premium Grains & Pantry' },
+    { src: '/images/oil-shelve.png', caption: 'Cooking Oils & Essentials' },
+    { src: '/images/cartoon-staff.png', caption: 'La Fourmi Family' },
+    { src: '/images/staff-cartoon.png', caption: 'Behind the Scenes' },
+    { src: '/images/darkfront-art.png', caption: 'Store Ambiance' },
+    { src: '/images/rose-art.png', caption: 'Artistic Touch' },
+    { src: '/images/jager-flag-art.png', caption: 'International Selection' },
+    { src: '/images/banner-art.png', caption: 'La Fourmi Branding' },
+    { src: '/images/icecream-art.png', caption: 'Frozen Delights' },
+    { src: '/images/flag-art.jpg', caption: 'Lebanese Heritage' },
   ];
 
   const handleShare = async (image: typeof images[0]) => {
@@ -105,7 +108,7 @@ const AboutGallery = () => {
                       alt={image.caption}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => {
-                        e.currentTarget.src = '/lovable-uploads/eb0a41e8-ad30-4380-86a3-6f415394328a.png';
+                        e.currentTarget.src = '/images/hero1-staff.png';
                       }}
                     />
                   </div>
@@ -195,7 +198,7 @@ const AboutGallery = () => {
                   alt={images[selectedImage].caption}
                   className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                   onError={(e) => {
-                    e.currentTarget.src = '/lovable-uploads/eb0a41e8-ad30-4380-86a3-6f415394328a.png';
+                    e.currentTarget.src = '/images/hero1-staff.png';
                   }}
                 />
 

@@ -128,7 +128,7 @@ const EnhancedProductCategories = () => {
 
         {/* Category Icons */}
         <motion.div 
-          className="flex flex-wrap justify-center gap-6 mb-8"
+          className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.3 }}
@@ -143,20 +143,20 @@ const EnhancedProductCategories = () => {
                 onClick={() => toggleCategory(category.id)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className={`flex flex-col items-center gap-2 p-4 rounded-2xl transition-all duration-300 ${
+                className={`flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl transition-all duration-300 ${
                   selectedCategory === category.id 
                     ? 'bg-grocery-yellow text-black shadow-lg' 
                     : 'bg-card hover:bg-muted'
                 }`}
               >
-                <div className={`p-3 rounded-full ${
+                <div className={`p-2 sm:p-2.5 md:p-3 rounded-full ${
                   selectedCategory === category.id 
                     ? 'bg-black/10' 
                     : 'bg-grocery-yellow/10'
                 }`}>
-                  <Icon className="h-8 w-8" />
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8" />
                 </div>
-                <span className="text-sm font-medium">{category.name}</span>
+                <span className="text-xs sm:text-sm font-medium text-center leading-tight">{category.name}</span>
                 <span className="text-xs opacity-70">{productCount} items</span>
               </motion.button>
             );
@@ -229,11 +229,11 @@ const EnhancedProductCategories = () => {
               exit={{ scale: 0, opacity: 0 }}
             >
               <div className="flex items-center gap-3">
-                <div className="bg-grocery-yellow/10 p-3 rounded-full">
+                <div className="bg-grocery-yellow/10 p-3 rounded-full border border-grocery-yellow/30">
                   <ShoppingCart className="h-6 w-6 text-grocery-yellow" />
                 </div>
                 <div>
-                  <p className="font-bold text-lg">{getTotalItems()} items</p>
+                  <p className="font-bold text-lg text-card-foreground">{getTotalItems()} items</p>
                   <p className="text-sm text-muted-foreground">in your cart</p>
                 </div>
               </div>
@@ -242,7 +242,7 @@ const EnhancedProductCategories = () => {
         </AnimatePresence>
 
         {/* Products Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3 sm:gap-4 md:gap-6">
           {filteredProducts.map((product, index) => (
             <motion.div
               key={product.id}
@@ -250,9 +250,9 @@ const EnhancedProductCategories = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.5) }}
             >
-              <Card className="group hover:scale-105 transition-all duration-300 h-full flex flex-col overflow-hidden">
+              <Card className="group hover:scale-105 transition-all duration-300 h-full flex flex-col overflow-hidden bg-card border-grocery-yellow/20 shadow-lg hover:shadow-2xl">
                 <CardHeader className="p-0">
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-24 sm:h-28 md:h-32 lg:h-36 xl:h-40 overflow-hidden bg-muted">
                     <img 
                       src={product.image} 
                       alt={product.name}
@@ -262,27 +262,27 @@ const EnhancedProductCategories = () => {
                       }}
                     />
                     {!product.inStock && (
-                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-                        <span className="text-white font-bold">Out of Stock</span>
+                      <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
+                        <span className="text-white text-xs sm:text-sm font-bold bg-black/50 px-2 py-1 rounded-full">Out of Stock</span>
                       </div>
                     )}
                   </div>
                 </CardHeader>
                 
-                <CardContent className="p-4 flex-1 flex flex-col">
+                <CardContent className="p-2 sm:p-3 md:p-4 flex-1 flex flex-col bg-card">
                   <div className="flex-1">
-                    <CardTitle className="text-lg mb-1 line-clamp-2">{product.name}</CardTitle>
+                    <CardTitle className="text-sm sm:text-base lg:text-lg mb-1 line-clamp-2">{product.name}</CardTitle>
                     {product.brand && (
-                      <p className="text-sm text-muted-foreground mb-2">{product.brand}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-2">{product.brand}</p>
                     )}
                   </div>
                   
-                  <div className="space-y-3 mt-auto">
+                  <div className="space-y-2 sm:space-y-3 mt-auto">
                     <div className="flex flex-col gap-1">
-                      <span className="text-xl font-bold text-grocery-yellow">
+                      <span className="text-base sm:text-lg lg:text-xl font-bold text-grocery-yellow">
                         ${product.price.toFixed(2)}
                       </span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-xs sm:text-sm text-muted-foreground">
                         {product.priceLBP.toLocaleString()} LBP
                       </span>
                     </div>
@@ -290,41 +290,42 @@ const EnhancedProductCategories = () => {
                     <div className="flex items-center justify-between">
                       {product.inStock ? (
                         cart[product.id] ? (
-                          <div className="flex items-center gap-2 w-full">
+                          <div className="flex items-center gap-1 sm:gap-2 w-full">
                             <Button
                               size="sm"
                               variant="outline"
                               onClick={() => removeFromCart(product.id)}
-                              className="h-9 w-9 p-0 rounded-full"
+                              className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 p-0 rounded-full"
                             >
-                              <Minus className="h-4 w-4" />
+                              <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
                             </Button>
-                            <span className="font-bold text-lg flex-1 text-center">
+                            <span className="font-bold text-sm sm:text-base lg:text-lg flex-1 text-center">
                               {cart[product.id]}
                             </span>
                             <Button
                               size="sm"
                               onClick={() => handleAddToCart(product.id)}
-                              className="h-9 w-9 p-0 rounded-full bg-grocery-yellow text-black hover:bg-grocery-yellow-light"
+                              className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 p-0 rounded-full bg-grocery-yellow text-black hover:bg-grocery-yellow-light"
                             >
-                              <Plus className="h-4 w-4" />
+                              <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
                             </Button>
                           </div>
                         ) : (
                           <Button
                             size="sm"
                             onClick={() => handleAddToCart(product.id)}
-                            className="w-full rounded-full bg-grocery-yellow text-black hover:bg-grocery-yellow-light"
+                            className="w-full rounded-full text-xs sm:text-sm bg-grocery-yellow text-black hover:bg-grocery-yellow-light"
                           >
-                            <ShoppingCart className="h-4 w-4 mr-2" />
-                            Add to Cart
+                            <ShoppingCart className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                            <span className="hidden sm:inline">Add to Cart</span>
+                            <span className="sm:hidden">Add</span>
                           </Button>
                         )
                       ) : (
                         <Button
                           size="sm"
                           disabled
-                          className="w-full rounded-full"
+                          className="w-full rounded-full text-xs sm:text-sm"
                         >
                           Out of Stock
                         </Button>
