@@ -9,7 +9,7 @@ const AboutGallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   
   const images = [
-    { src: '/images/hero1-staff.png', caption: 'Meet Elie - Founder & Owner' },
+    { src: '/images/hero1.-staff.png', caption: 'Meet Elie - Founder & Owner' },
     { src: '/images/hero2-staff.png', caption: 'Our Dedicated Team' },
     { src: '/images/hero3-staff.png', caption: 'Customer Service Excellence' },
     { src: '/images/beauty-shelve.png', caption: 'Beauty & Personal Care' },
@@ -108,7 +108,7 @@ const AboutGallery = () => {
                       alt={image.caption}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => {
-                        e.currentTarget.src = '/images/hero1-staff.png';
+                        e.currentTarget.src = '/images/hero1.-staff.png';
                       }}
                     />
                   </div>
@@ -198,7 +198,7 @@ const AboutGallery = () => {
                   alt={images[selectedImage].caption}
                   className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                   onError={(e) => {
-                    e.currentTarget.src = '/images/hero1-staff.png';
+                    e.currentTarget.src = '/images/hero1.-staff.png';
                   }}
                 />
 
